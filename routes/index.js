@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var comment ={};
+var comments ={};
 function html_encode(str){
 	var s='';
-	if(str.length===0) return "";
+	if(str.length===0) return ""
 	s=str.replace(/&/g,"&gt;");
 	s=s.replace(/</g,"&lt;");
 	s=s.replace(/>/g,"&gt;");
@@ -17,12 +17,12 @@ function html_encode(str){
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-router.get('/commment',function(req,res,next){
+router.get('/comment',function(req,res,next){
 	comments.v=html_encode(req.query.comment);
-})
-router.get('/getCommment',function(req,res,next){
+});
+router.get('/getComment',function(req,res,next){
 	res.json({
 		comment: comments.v
 	})
-})
+});
 module.exports = router;
